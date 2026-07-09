@@ -1,4 +1,4 @@
-import { ArrowLeft, Facebook, Instagram, Linkedin, Mail, MessageCircle } from "lucide-react";
+﻿import { ArrowLeft, Facebook, Instagram, Linkedin, Mail, MessageCircle } from "lucide-react";
 import { useState } from "react";
 
 const divisions = [
@@ -87,7 +87,8 @@ function App() {
 
   return (
     <main className={`portal ${opened ? "is-open" : ""}`}>
-      <video className="video-bg" autoPlay muted loop playsInline>
+      <video className="video-bg" autoPlay muted loop playsInline preload="auto">
+        <source src="/videos/holen-bg.webm" type="video/webm" />
         <source src="/videos/holen-bg.mp4" type="video/mp4" />
       </video>
       <div className="ambient ambient-one" />
@@ -129,3 +130,5 @@ function App() {
 }
 
 export default App;
+
+
