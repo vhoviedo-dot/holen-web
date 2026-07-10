@@ -1,5 +1,5 @@
 ﻿import { ArrowLeft, Facebook, Instagram, Linkedin, Mail, MessageCircle } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const divisions = [
   {
@@ -59,6 +59,31 @@ const socialLinks = [
 function App() {
   const [opened, setOpened] = useState(false);
   const [activeDivision, setActiveDivision] = useState(null);
+  const videoRef = useRef(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    const playBackground = () => {
+      video.muted = true;
+      video.defaultMuted = true;
+      video.playsInline = true;
+      const playPromise = video.play();
+      if (playPromise?.catch) {
+        playPromise.catch(() => {});
+      }
+    };
+
+    playBackground();
+    window.addEventListener("touchstart", playBackground, { once: true, passive: true });
+    window.addEventListener("pointerdown", playBackground, { once: true });
+
+    return () => {
+      window.removeEventListener("touchstart", playBackground);
+      window.removeEventListener("pointerdown", playBackground);
+    };
+  }, []);
 
   const active = divisions.find((division) => division.key === activeDivision);
 
@@ -87,7 +112,7 @@ function App() {
 
   return (
     <main className={`portal ${opened ? "is-open" : ""}`}>
-      <video className="video-bg" autoPlay muted loop playsInline preload="auto">
+      <video ref={videoRef} className="video-bg" autoPlay muted loop playsInline webkit-playsinline="true" preload="auto" poster="/video-thumb.png" disablePictureInPicture>
         <source src="/videos/holen-bg.webm" type="video/webm" />
         <source src="/videos/holen-bg.mp4" type="video/mp4" />
       </video>
@@ -130,5 +155,7 @@ function App() {
 }
 
 export default App;
+
+
 
 

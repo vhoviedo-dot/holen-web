@@ -674,7 +674,16 @@ button {
   }
 
   .video-bg {
-    opacity: 0.48;
+    display: block;
+    opacity: 0.56;
+  }
+
+  .portal {
+    background:
+      radial-gradient(circle at 50% 20%, rgba(255, 255, 255, 0.08), transparent 24%),
+      radial-gradient(circle at 50% 100%, rgba(72, 170, 185, 0.16), transparent 46%),
+      linear-gradient(145deg, rgba(255, 255, 255, 0.035), transparent 36%),
+      #05070a;
   }
 
   .portal.is-open .core-stage {
@@ -760,3 +769,6 @@ button {
     transform: translateY(0) scale(1);
   }
 }
+
+
+
