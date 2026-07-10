@@ -31,7 +31,7 @@ const divisions = [
 const socialLinks = [
   {
     name: "Instagram",
-    href: "https://www.instagram.com/holenindustrial",
+    href: "https://www.instagram.com/redholen/",
     icon: Instagram,
   },
   {
