@@ -1,6 +1,8 @@
 ﻿import { ArrowLeft, Facebook, Instagram, Linkedin, Mail, MessageCircle } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
+const contactEmails = ["dleiva@holen.com.ar", "hoviedo@holen.com.ar"];
+
 const divisions = [
   {
     key: "agro",
@@ -45,8 +47,8 @@ const socialLinks = [
     icon: Linkedin,
   },
   {
-    name: "WhatsApp",
-    href: "https://wa.me/542646267359",
+    name: "Mensaje",
+    action: "contact",
     icon: MessageCircle,
   },
   {
@@ -59,6 +61,8 @@ const socialLinks = [
 function App() {
   const [opened, setOpened] = useState(false);
   const [activeDivision, setActiveDivision] = useState(null);
+  const [contactOpen, setContactOpen] = useState(false);
+  const [contactForm, setContactForm] = useState({ name: "", email: "", message: "" });
   const videoRef = useRef(null);
 
   useEffect(() => {
@@ -86,6 +90,25 @@ function App() {
   }, []);
 
   const active = divisions.find((division) => division.key === activeDivision);
+
+  const updateContactField = (field, value) => {
+    setContactForm((current) => ({ ...current, [field]: value }));
+  };
+
+  const sendContactMessage = (event) => {
+    event.preventDefault();
+    const subject = "Mensaje desde el sitio oficial de Holen";
+    const body = [
+      `Nombre: ${contactForm.name || "Sin indicar"}`,
+      `Email: ${contactForm.email || "Sin indicar"}`,
+      "",
+      "Mensaje:",
+      contactForm.message,
+    ].join("\n");
+
+    window.location.href = `mailto:${contactEmails.join(",")}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    setContactOpen(false);
+  };
 
   if (active) {
     return (
@@ -125,10 +148,16 @@ function App() {
         </button>
         <p className="portal-welcome">BIENVENIDO AL SITIO OFICIAL DE HOLEN</p>
         <nav className="social-links" aria-label="Redes y contacto de Holen">
-          {socialLinks.map(({ name, href, icon: Icon }) => (
-            <a key={name} href={href} target="_blank" rel="noreferrer" aria-label={name} title={name}>
-              <Icon size={22} strokeWidth={1.8} />
-            </a>
+          {socialLinks.map(({ name, href, action, icon: Icon }) => (
+            action === "contact" ? (
+              <button key={name} type="button" onClick={() => setContactOpen(true)} aria-label={name} title={name}>
+                <Icon size={22} strokeWidth={1.8} />
+              </button>
+            ) : (
+              <a key={name} href={href} target="_blank" rel="noreferrer" aria-label={name} title={name}>
+                <Icon size={22} strokeWidth={1.8} />
+              </a>
+            )
           ))}
         </nav>
       </div>
@@ -146,6 +175,38 @@ function App() {
         ))}
       </div>
 
+      {contactOpen && (
+        <div className="contact-modal-backdrop" role="presentation" onClick={() => setContactOpen(false)}>
+          <form className="contact-modal" onSubmit={sendContactMessage} onClick={(event) => event.stopPropagation()}>
+            <div className="contact-modal-head">
+              <span>Contacto directo</span>
+              <button type="button" onClick={() => setContactOpen(false)} aria-label="Cerrar formulario">Cerrar</button>
+            </div>
+            <h2>Enviar mensaje a Holen</h2>
+            <input
+              type="text"
+              placeholder="Nombre"
+              value={contactForm.name}
+              onChange={(event) => updateContactField("name", event.target.value)}
+            />
+            <input
+              type="email"
+              placeholder="Email"
+              value={contactForm.email}
+              onChange={(event) => updateContactField("email", event.target.value)}
+            />
+            <textarea
+              placeholder="Escribi tu mensaje"
+              value={contactForm.message}
+              onChange={(event) => updateContactField("message", event.target.value)}
+              required
+            />
+            <button className="contact-submit" type="submit">Enviar por correo</button>
+            <p>Se abrira tu correo dirigido a dleiva@holen.com.ar y hoviedo@holen.com.ar.</p>
+          </form>
+        </div>
+      )}
+
       <footer className="portal-footer">
         Desarrollado por HOLEN GESTIÓN - Todos los derechos reservados
       </footer>
@@ -154,10 +215,3 @@ function App() {
 }
 
 export default App;
-
-
-
-
-
-
-

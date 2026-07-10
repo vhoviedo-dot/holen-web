@@ -189,7 +189,8 @@ button {
   transform: translateY(-8px) scale(0.96);
 }
 
-.social-links a {
+.social-links a,
+.social-links button {
   width: 44px;
   height: 44px;
   display: grid;
@@ -204,7 +205,8 @@ button {
   transition: transform 180ms ease, border-color 180ms ease, background 180ms ease, color 180ms ease;
 }
 
-.social-links a:hover {
+.social-links a:hover,
+.social-links button:hover {
   transform: translateY(-3px);
   border-color: rgba(255, 255, 255, 0.48);
   background: rgba(255, 255, 255, 0.13);
@@ -564,7 +566,8 @@ button {
     letter-spacing: 0.14em;
   }
 
-  .social-links a {
+  .social-links a,
+.social-links button {
     width: 40px;
     height: 40px;
   }
@@ -629,7 +632,8 @@ button {
     gap: 9px;
   }
 
-  .social-links a {
+  .social-links a,
+.social-links button {
     width: 38px;
     height: 38px;
   }
@@ -807,4 +811,102 @@ button {
 
 
 
+
+
+.contact-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  display: grid;
+  place-items: center;
+  padding: 22px;
+  background: rgba(0, 0, 0, 0.62);
+  backdrop-filter: blur(12px);
+}
+
+.contact-modal {
+  width: min(460px, calc(100vw - 36px));
+  display: grid;
+  gap: 14px;
+  padding: 22px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 12px;
+  background: rgba(7, 10, 14, 0.94);
+  box-shadow: 0 30px 110px rgba(0, 0, 0, 0.58);
+}
+
+.contact-modal-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.contact-modal-head span {
+  color: rgba(246, 247, 249, 0.56);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.contact-modal-head button {
+  min-height: 34px;
+  padding: 0 12px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.06);
+  color: rgba(246, 247, 249, 0.82);
+  cursor: pointer;
+}
+
+.contact-modal h2 {
+  margin: 0 0 4px;
+  font-size: clamp(24px, 5vw, 34px);
+  letter-spacing: 0;
+}
+
+.contact-modal input,
+.contact-modal textarea {
+  width: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.075);
+  color: var(--text);
+  font: inherit;
+  outline: none;
+}
+
+.contact-modal input {
+  min-height: 44px;
+  padding: 0 13px;
+}
+
+.contact-modal textarea {
+  min-height: 130px;
+  padding: 12px 13px;
+  resize: vertical;
+}
+
+.contact-modal input::placeholder,
+.contact-modal textarea::placeholder {
+  color: rgba(246, 247, 249, 0.42);
+}
+
+.contact-submit {
+  min-height: 46px;
+  border: 0;
+  border-radius: 8px;
+  background: #f4f5f6;
+  color: #101418;
+  font-weight: 850;
+  cursor: pointer;
+}
+
+.contact-modal p {
+  margin: 0;
+  color: rgba(246, 247, 249, 0.5);
+  font-size: 12px;
+  line-height: 1.5;
+}
 
