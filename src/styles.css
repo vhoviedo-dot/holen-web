@@ -135,7 +135,7 @@ button {
 
 .core-logo {
   position: relative;
-  width: min(780px, 84vw);
+  width: min(680px, 80vw);
   padding: 0;
   border: 0;
   background: transparent;
@@ -234,7 +234,7 @@ button {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: clamp(12px, 2vw, 22px);
+  gap: clamp(10px, 1.5vw, 18px);
   pointer-events: none;
 }
 
@@ -252,12 +252,12 @@ button {
 
 .division-node {
   position: relative;
-  width: min(190px, 16vw);
-  min-width: 136px;
-  height: 76px;
+  width: min(158px, 13vw);
+  min-width: 118px;
+  height: 64px;
   display: grid;
   place-items: center;
-  padding: 12px 18px;
+  padding: 10px 14px;
   border: 1px solid var(--line);
   border-radius: 10px;
   background: rgba(8, 11, 15, 0.72);
@@ -266,13 +266,13 @@ button {
   cursor: pointer;
   opacity: 0;
   pointer-events: none;
-  transform: translateY(64px) scale(0.72);
+  transform: translateY(48px) scale(0.76);
   transition: border-color 180ms ease, background 180ms ease, transform 180ms ease;
 }
 
 .division-node img {
   max-width: 100%;
-  max-height: 48px;
+  max-height: 38px;
   object-fit: contain;
   filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.14));
 }
@@ -520,8 +520,8 @@ button {
 
 @keyframes logoToTop {
   to {
-    width: min(760px, 76vw);
-    transform: translateY(-25vh) scale(0.94);
+    width: min(520px, 58vw);
+    transform: translateY(-23vh) scale(0.9);
   }
 }
 
@@ -540,11 +540,11 @@ button {
 @keyframes childrenRow {
   0% {
     opacity: 0;
-    transform: translateY(64px) scale(0.72);
+    transform: translateY(48px) scale(0.76);
   }
   100% {
     opacity: 1;
-    transform: translateY(128px) scale(1);
+    transform: translateY(106px) scale(1);
   }
 }
 
@@ -558,7 +558,7 @@ button {
 
 @media (max-width: 860px) {
   .core-logo {
-    width: min(560px, 84vw);
+    width: min(470px, 82vw);
   }
 
   .portal-welcome {
@@ -573,9 +573,9 @@ button {
   }
 
   .division-node {
-    width: min(190px, 40vw);
-    min-width: 136px;
-    height: 82px;
+    width: min(158px, 38vw);
+    min-width: 118px;
+    height: 70px;
     padding: 12px;
   }
   
@@ -607,7 +607,7 @@ button {
 
 @media (max-width: 520px) {
   .core-logo {
-    width: min(390px, 86vw);
+    width: min(330px, 82vw);
   }
 
   .is-open .core-logo {
@@ -619,13 +619,13 @@ button {
   }
 
   .division-node {
-    width: min(230px, 68vw);
+    width: min(210px, 64vw);
     min-width: 0;
-    height: 76px;
+    height: 64px;
   }
 
   .division-node img {
-    max-height: 48px;
+    max-height: 38px;
   }
 
   .social-links {
@@ -663,7 +663,7 @@ button {
 
 @keyframes logoToTopMobile {
   to {
-    width: min(360px, 78vw);
+    width: min(300px, 72vw);
     transform: translateY(-32vh) scale(0.9);
   }
 }
@@ -732,7 +732,7 @@ button {
   }
 
   .portal.is-open .core-logo {
-    width: min(330px, 82vw);
+    width: min(270px, 74vw);
   }
 
   .portal.is-open .portal-welcome {
@@ -751,7 +751,7 @@ button {
     position: relative;
     inset: auto;
     z-index: 6;
-    width: min(280px, 78vw);
+    width: min(240px, 72vw);
     display: grid;
     grid-template-columns: 1fr;
     gap: 12px;
@@ -763,7 +763,7 @@ button {
   .portal.is-open .division-node {
     width: 100%;
     min-width: 0;
-    height: 68px;
+    height: 58px;
     padding: 10px 16px;
     opacity: 1;
     transform: none;
@@ -772,7 +772,7 @@ button {
   }
 
   .portal.is-open .division-node img {
-    max-height: 42px;
+    max-height: 34px;
   }
 
   .portal.is-open .portal-footer {
@@ -922,6 +922,7 @@ button {
   font-size: 12px;
   line-height: 1.5;
 }
+
 
 
 
