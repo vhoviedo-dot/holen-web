@@ -1,8 +1,6 @@
 ﻿import { ArrowLeft, Facebook, Instagram, Linkedin, Mail, MessageCircle } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
-const contactEmails = ["dleiva@holen.com.ar", "hoviedo@holen.com.ar"];
-
 const divisions = [
   {
     key: "agro",
@@ -43,7 +41,7 @@ const socialLinks = [
   },
   {
     name: "LinkedIn",
-    href: "https://www.linkedin.com/company/holen-industrial",
+    href: "https://www.linkedin.com/in/holen-industrial-93429338a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app",
     icon: Linkedin,
   },
   {
@@ -62,6 +60,7 @@ function App() {
   const [opened, setOpened] = useState(false);
   const [activeDivision, setActiveDivision] = useState(null);
   const [contactOpen, setContactOpen] = useState(false);
+  const [contactStatus, setContactStatus] = useState("idle");
   const [contactForm, setContactForm] = useState({ name: "", email: "", message: "" });
   const videoRef = useRef(null);
 
@@ -208,8 +207,10 @@ function App() {
               onChange={(event) => updateContactField("message", event.target.value)}
               required
             />
-            <button className="contact-submit" type="submit">Enviar por correo</button>
-            <p>Se abrira tu correo dirigido a dleiva@holen.com.ar y hoviedo@holen.com.ar.</p>
+            <button className="contact-submit" type="submit" disabled={contactStatus === "sending"}>{contactStatus === "sending" ? "Enviando..." : "Enviar mensaje"}</button>
+            {contactStatus === "sent" && <p className="contact-status">Mensaje enviado correctamente.</p>}
+            {contactStatus === "error" && <p className="contact-status contact-error">No se pudo enviar. Intentalo nuevamente.</p>}
+            <p>Tu consulta se enviara al equipo de Holen.</p>
           </form>
         </div>
       )}
@@ -222,4 +223,6 @@ function App() {
 }
 
 export default App;
+
+
 
