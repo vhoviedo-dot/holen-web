@@ -113,7 +113,6 @@ function App() {
   return (
     <main className={`portal ${opened ? "is-open" : ""}`}>
       <video ref={videoRef} className="video-bg" autoPlay muted loop playsInline webkit-playsinline="true" preload="auto" poster="/video-thumb.png" disablePictureInPicture>
-        <source src="/videos/holen-bg.webm" type="video/webm" />
         <source src="/videos/holen-bg.mp4" type="video/mp4" />
       </video>
       <div className="ambient ambient-one" />
@@ -155,6 +154,8 @@ function App() {
 }
 
 export default App;
+
+
 
 
 
