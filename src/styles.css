@@ -903,10 +903,25 @@ button {
   cursor: pointer;
 }
 
+.contact-submit:disabled {
+  cursor: wait;
+  opacity: 0.72;
+}
+
+.contact-status {
+  color: rgba(146, 226, 170, 0.9) !important;
+}
+
+.contact-error {
+  color: rgba(255, 150, 130, 0.92) !important;
+}
+
 .contact-modal p {
   margin: 0;
   color: rgba(246, 247, 249, 0.5);
   font-size: 12px;
   line-height: 1.5;
 }
+
+
 

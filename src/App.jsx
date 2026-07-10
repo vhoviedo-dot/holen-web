@@ -95,19 +95,26 @@ function App() {
     setContactForm((current) => ({ ...current, [field]: value }));
   };
 
-  const sendContactMessage = (event) => {
+  const sendContactMessage = async (event) => {
     event.preventDefault();
-    const subject = "Mensaje desde el sitio oficial de Holen";
-    const body = [
-      `Nombre: ${contactForm.name || "Sin indicar"}`,
-      `Email: ${contactForm.email || "Sin indicar"}`,
-      "",
-      "Mensaje:",
-      contactForm.message,
-    ].join("\n");
+    setContactStatus("sending");
 
-    window.location.href = `mailto:${contactEmails.join(",")}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    setContactOpen(false);
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(contactForm),
+      });
+
+      if (!response.ok) {
+        throw new Error("No se pudo enviar el mensaje");
+      }
+
+      setContactStatus("sent");
+      setContactForm({ name: "", email: "", message: "" });
+    } catch {
+      setContactStatus("error");
+    }
   };
 
   if (active) {
@@ -150,7 +157,7 @@ function App() {
         <nav className="social-links" aria-label="Redes y contacto de Holen">
           {socialLinks.map(({ name, href, action, icon: Icon }) => (
             action === "contact" ? (
-              <button key={name} type="button" onClick={() => setContactOpen(true)} aria-label={name} title={name}>
+              <button key={name} type="button" onClick={() => { setContactStatus("idle"); setContactOpen(true); }} aria-label={name} title={name}>
                 <Icon size={22} strokeWidth={1.8} />
               </button>
             ) : (
@@ -215,3 +222,4 @@ function App() {
 }
 
 export default App;
+
