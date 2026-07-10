@@ -11,7 +11,7 @@ export default async function handler(request, response) {
 
   const apiKey = process.env.RESEND_API_KEY;
   const to = process.env.CONTACT_TO;
-  const from = process.env.CONTACT_FROM || "Holen <contacto@holen.com.ar>";
+  const from = process.env.CONTACT_FROM || "Holen <onboarding@resend.dev>";
 
   if (!apiKey || !to) {
     return json(response, 500, { error: "Contact service is not configured" });
@@ -61,3 +61,4 @@ function escapeHtml(value) {
     .replace(/"/g, "&quot;")
     .replace(/'/g, "&#039;");
 }
+
