@@ -147,13 +147,14 @@ function App() {
       </div>
 
       <footer className="portal-footer">
-        Desarrollado por Holen Gestion - Todos los derechos reservados
+        Desarrollado por HOLEN GESTIÓN - Todos los derechos reservados
       </footer>
     </main>
   );
 }
 
 export default App;
+
 
 
 
