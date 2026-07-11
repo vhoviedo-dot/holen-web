@@ -1,4 +1,4 @@
-import { ArrowLeft, BarChart3, Droplets, Facebook, Gauge, Instagram, Linkedin, Mail, MessageCircle, Satellite } from "lucide-react";
+import { Activity, ArrowLeft, BarChart3, Cpu, Droplets, Facebook, Factory, Gauge, Instagram, Linkedin, Mail, MessageCircle, Satellite, ShieldCheck } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
 const divisions = [
@@ -88,6 +88,75 @@ function AgroLanding({ onBack }) {
       </section>
 
       <footer className="agro-bottom-bar">
+        <div>
+          <strong>Charlemos sobre tu proyecto</strong>
+          <span>Te podemos ayudar</span>
+        </div>
+        <p>Desarrollado por HOLEN GESTION - Todos los derechos reservados</p>
+      </footer>
+    </main>
+  );
+}
+
+const industrialFeatures = [
+  {
+    title: "Automatizacion industrial",
+    text: "Integracion de sensores, tableros, PLC y equipos para procesos mas estables y controlados.",
+    icon: Factory,
+  },
+  {
+    title: "Control en tiempo real",
+    text: "Visualizacion de variables criticas, estados de maquina, alarmas y eventos operativos.",
+    icon: Activity,
+  },
+  {
+    title: "Datos para decidir",
+    text: "Indicadores productivos y tableros para mantenimiento, calidad, eficiencia y gestion.",
+    icon: BarChart3,
+  },
+  {
+    title: "Sistemas confiables",
+    text: "Arquitecturas robustas para monitoreo, trazabilidad, seguridad operativa y continuidad.",
+    icon: ShieldCheck,
+  },
+];
+
+function IndustrialLanding({ onBack }) {
+  return (
+    <main className="division-page page-industrial industrial-landing">
+      <video className="industrial-bg-video" autoPlay muted loop playsInline webkit-playsinline="true" preload="auto" disablePictureInPicture>
+        <source src="/videos/holen-industrial-bg.mp4" type="video/mp4" />
+      </video>
+      <button className="back-button" onClick={onBack}>
+        <ArrowLeft size={18} />
+        Volver
+      </button>
+
+      <section className="industrial-hero">
+        <div className="industrial-brand">
+          <img src="/images/holen-industrial.png" alt="HOLEN INDUSTRIAL" />
+        </div>
+
+        <div className="industrial-copy">
+          <span>HOLEN INDUSTRIAL</span>
+          <h1>Automatizacion, control y datos</h1>
+          <p>
+            Desarrollamos soluciones industriales para conectar procesos, visualizar informacion critica y mejorar la toma de decisiones en planta.
+          </p>
+        </div>
+      </section>
+
+      <section className="industrial-feature-grid" aria-label="Soluciones de Holen Industrial">
+        {industrialFeatures.map(({ title, text, icon: Icon }) => (
+          <article className="industrial-feature" key={title}>
+            <Icon size={24} strokeWidth={1.8} />
+            <h2>{title}</h2>
+            <p>{text}</p>
+          </article>
+        ))}
+      </section>
+
+      <footer className="industrial-bottom-bar">
         <div>
           <strong>Charlemos sobre tu proyecto</strong>
           <span>Te podemos ayudar</span>
@@ -187,6 +256,10 @@ function App() {
 
   if (active?.key === "agro") {
     return <AgroLanding onBack={() => setActiveDivision(null)} />;
+  }
+
+  if (active?.key === "industrial") {
+    return <IndustrialLanding onBack={() => setActiveDivision(null)} />;
   }
 
   if (active) {
@@ -296,6 +369,7 @@ function App() {
 }
 
 export default App;
+
 
 
 
