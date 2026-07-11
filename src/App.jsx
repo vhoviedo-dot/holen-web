@@ -1,4 +1,4 @@
-﻿import { ArrowLeft, Facebook, Instagram, Linkedin, Mail, MessageCircle } from "lucide-react";
+import { ArrowLeft, BarChart3, Droplets, Facebook, Gauge, Instagram, Linkedin, Mail, MessageCircle, Satellite } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
 const divisions = [
@@ -28,6 +28,75 @@ const divisions = [
   },
 ];
 
+
+const agroFeatures = [
+  {
+    title: "Monitoreo remoto",
+    text: "Variables criticas del campo visibles desde cualquier lugar, con informacion clara para actuar a tiempo.",
+    icon: Satellite,
+  },
+  {
+    title: "Riego inteligente",
+    text: "Control y seguimiento de sistemas de riego para mejorar eficiencia, disponibilidad y consumo.",
+    icon: Droplets,
+  },
+  {
+    title: "Tableros de gestion",
+    text: "Indicadores simples para produccion, mantenimiento, alarmas y seguimiento operativo.",
+    icon: BarChart3,
+  },
+  {
+    title: "Automatizacion rural",
+    text: "Soluciones a medida para integrar sensores, equipos, tableros y procesos productivos.",
+    icon: Gauge,
+  },
+];
+
+function AgroLanding({ onBack }) {
+  return (
+    <main className="division-page page-agro agro-landing">
+      <video className="agro-bg-video" autoPlay muted loop playsInline webkit-playsinline="true" preload="auto" disablePictureInPicture>
+        <source src="/videos/holen-agro-bg.mp4" type="video/mp4" />
+      </video>
+      <button className="back-button" onClick={onBack}>
+        <ArrowLeft size={18} />
+        Volver
+      </button>
+
+      <section className="agro-hero">
+        <div className="agro-brand">
+          <img src="/images/holen-agro-new.png" alt="HOLEN AGRO" />
+        </div>
+
+        <div className="agro-copy">
+          <span>HOLEN AGRO</span>
+          <h1>Tecnologia aplicada al campo</h1>
+          <p>
+            Integramos automatizacion, monitoreo remoto y tableros de control para que la operacion agroindustrial sea mas visible, eficiente y confiable.
+          </p>
+        </div>
+      </section>
+
+      <section className="agro-feature-grid" aria-label="Soluciones de Holen Agro">
+        {agroFeatures.map(({ title, text, icon: Icon }) => (
+          <article className="agro-feature" key={title}>
+            <Icon size={24} strokeWidth={1.8} />
+            <h2>{title}</h2>
+            <p>{text}</p>
+          </article>
+        ))}
+      </section>
+
+      <footer className="agro-bottom-bar">
+        <div>
+          <strong>Charlemos sobre tu proyecto</strong>
+          <span>Te podemos ayudar</span>
+        </div>
+        <p>Desarrollado por HOLEN GESTION - Todos los derechos reservados</p>
+      </footer>
+    </main>
+  );
+}
 const socialLinks = [
   {
     name: "Instagram",
@@ -115,6 +184,10 @@ function App() {
       setContactStatus("error");
     }
   };
+
+  if (active?.key === "agro") {
+    return <AgroLanding onBack={() => setActiveDivision(null)} />;
+  }
 
   if (active) {
     return (
@@ -216,13 +289,17 @@ function App() {
       )}
 
       <footer className="portal-footer">
-        Desarrollado por HOLEN GESTIÓN - Todos los derechos reservados
+        Desarrollado por HOLEN GESTION - Todos los derechos reservados
       </footer>
     </main>
   );
 }
 
 export default App;
+
+
+
+
 
 
 
