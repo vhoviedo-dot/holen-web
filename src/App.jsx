@@ -1,4 +1,4 @@
-import { Activity, ArrowLeft, BarChart3, Cpu, Droplets, Facebook, Factory, Gauge, Instagram, Linkedin, Mail, MessageCircle, Satellite, ShieldCheck } from "lucide-react";
+﻿import { Activity, ArrowLeft, BarChart3, Cpu, Droplets, Facebook, Factory, Gauge, Instagram, Linkedin, Mail, MessageCircle, Satellite, ShieldCheck } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
 const divisions = [
@@ -166,6 +166,75 @@ function IndustrialLanding({ onBack }) {
     </main>
   );
 }
+
+const gestionFeatures = [
+  {
+    title: "Sistemas a medida",
+    text: "Gestion comercial, servicios, produccion, administracion o cualquier proceso que tu negocio necesite ordenar.",
+    icon: Cpu,
+  },
+  {
+    title: "Todo integrado",
+    text: "Conectamos las herramientas que ya usas y sumamos las que quieras incorporar para trabajar sin duplicar tareas.",
+    icon: Activity,
+  },
+  {
+    title: "Desde cualquier lugar",
+    text: "Acceso desde computadora, tablet o celular para que la informacion este disponible cuando hace falta.",
+    icon: BarChart3,
+  },
+  {
+    title: "Programamos soluciones",
+    text: "Si se puede pensar, medir, conectar o automatizar, Holen Gestion puede desarrollarlo.",
+    icon: ShieldCheck,
+  },
+];
+
+function GestionLanding({ onBack }) {
+  return (
+    <main className="division-page page-gestion gestion-landing">
+      <video className="gestion-bg-video" autoPlay muted loop playsInline webkit-playsinline="true" preload="auto" disablePictureInPicture>
+        <source src="/videos/holen-gestion-bg.mp4" type="video/mp4" />
+      </video>
+      <button className="back-button" onClick={onBack}>
+        <ArrowLeft size={18} />
+        Volver
+      </button>
+
+      <section className="gestion-hero">
+        <div className="gestion-brand">
+          <img src="/images/holen-gestion.png" alt="HOLEN GESTION" />
+        </div>
+
+        <div className="gestion-copy">
+          <span>HOLEN GESTION DIGITAL</span>
+          <h1>Sistemas de gestion a medida</h1>
+          <p>
+            Creamos plataformas digitales para comercios, servicios, industrias y equipos que necesitan ordenar informacion, integrar herramientas y trabajar desde cualquier dispositivo.
+          </p>
+        </div>
+      </section>
+
+      <section className="gestion-feature-grid" aria-label="Soluciones de Holen Gestion">
+        {gestionFeatures.map(({ title, text, icon: Icon }) => (
+          <article className="gestion-feature" key={title}>
+            <Icon size={24} strokeWidth={1.8} />
+            <h2>{title}</h2>
+            <p>{text}</p>
+          </article>
+        ))}
+      </section>
+
+      <footer className="gestion-bottom-bar">
+        <div>
+          <strong>Charlemos sobre tu proyecto</strong>
+          <span>Te podemos ayudar</span>
+        </div>
+        <p>Desarrollado por HOLEN GESTION - Todos los derechos reservados</p>
+      </footer>
+    </main>
+  );
+}
 const socialLinks = [
   {
     name: "Instagram",
@@ -260,6 +329,10 @@ function App() {
 
   if (active?.key === "industrial") {
     return <IndustrialLanding onBack={() => setActiveDivision(null)} />;
+  }
+
+  if (active?.key === "gestion") {
+    return <GestionLanding onBack={() => setActiveDivision(null)} />;
   }
 
   if (active) {
@@ -369,6 +442,8 @@ function App() {
 }
 
 export default App;
+
+
 
 
 

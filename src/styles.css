@@ -1,4 +1,4 @@
-:root {
+﻿:root {
   --bg: #05070a;
   --line: rgba(255, 255, 255, 0.11);
   --text: #f6f7f9;
@@ -1641,3 +1641,234 @@ button {
   }
 }
 
+
+.gestion-landing {
+  position: relative;
+  display: block;
+  height: 100vh;
+  min-height: 0;
+  padding: 0;
+  overflow: hidden;
+  background: #10070a;
+}
+
+.gestion-bg-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.74;
+  filter: saturate(1.04) contrast(1.05) brightness(0.72);
+  pointer-events: none;
+}
+
+.gestion-landing::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    linear-gradient(90deg, rgba(8, 4, 5, 0.9) 0%, rgba(8, 4, 5, 0.68) 34%, rgba(8, 4, 5, 0.2) 58%, rgba(8, 4, 5, 0.42) 100%),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.34), rgba(0, 0, 0, 0.08) 48%, rgba(0, 0, 0, 0.68) 100%);
+  pointer-events: none;
+}
+
+.gestion-hero,
+.gestion-feature-grid,
+.gestion-bottom-bar {
+  position: relative;
+  z-index: 2;
+}
+
+.gestion-hero {
+  position: absolute;
+  z-index: 3;
+  left: clamp(28px, 3vw, 48px);
+  top: 58px;
+  width: min(660px, 49vw);
+  display: grid;
+  justify-items: start;
+  gap: 10px;
+}
+
+.gestion-brand {
+  width: min(235px, 18vw);
+  display: grid;
+  place-items: center;
+  min-height: 78px;
+  padding: 9px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 9px;
+  background: rgba(15, 6, 6, 0.62);
+  box-shadow: 0 28px 90px rgba(0, 0, 0, 0.42), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(16px);
+}
+
+.gestion-brand img {
+  width: 100%;
+  max-height: 50px;
+  object-fit: contain;
+  filter: drop-shadow(0 0 22px rgba(255, 116, 56, 0.18));
+}
+
+.gestion-copy span {
+  display: block;
+  margin-bottom: 7px;
+  color: rgba(255, 154, 116, 0.95);
+  font-size: 10px;
+  font-weight: 850;
+  letter-spacing: 2.2px;
+  text-transform: uppercase;
+}
+
+.gestion-copy h1 {
+  max-width: 660px;
+  margin: 0 0 10px;
+  font-size: clamp(50px, 5.3vw, 78px);
+  line-height: 0.9;
+  letter-spacing: 0;
+}
+
+.gestion-copy p {
+  max-width: 540px;
+  margin: 0;
+  color: rgba(246, 247, 249, 0.72);
+  font-size: clamp(13px, 1vw, 16px);
+  line-height: 1.38;
+}
+
+.gestion-feature-grid {
+  position: absolute;
+  z-index: 3;
+  left: clamp(28px, 3vw, 48px);
+  right: clamp(28px, 3vw, 48px);
+  bottom: 92px;
+  width: auto;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 9px;
+}
+
+.gestion-feature {
+  min-height: 78px;
+  padding: 10px 11px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 8px;
+  background: rgba(14, 6, 6, 0.58);
+  box-shadow: 0 24px 90px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(14px);
+}
+
+.gestion-feature svg {
+  width: 16px;
+  height: 16px;
+  color: rgba(255, 154, 116, 0.95);
+  margin-bottom: 6px;
+}
+
+.gestion-feature h2 {
+  margin: 0 0 4px;
+  font-size: 13px;
+  letter-spacing: 0;
+}
+
+.gestion-feature p {
+  margin: 0;
+  color: rgba(246, 247, 249, 0.62);
+  font-size: 10.5px;
+  line-height: 1.28;
+}
+
+.gestion-bottom-bar {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  min-height: 76px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 14px clamp(28px, 4vw, 58px);
+  background: linear-gradient(180deg, rgba(5, 2, 2, 0.78), rgba(5, 2, 2, 0.95));
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 -22px 90px rgba(0, 0, 0, 0.55);
+}
+
+.gestion-bottom-bar div {
+  display: grid;
+  gap: 4px;
+}
+
+.gestion-bottom-bar strong {
+  color: #f6f7f9;
+  font-size: clamp(18px, 1.8vw, 25px);
+  line-height: 1.1;
+}
+
+.gestion-bottom-bar span {
+  color: rgba(255, 154, 116, 0.95);
+  font-size: 11px;
+  font-weight: 750;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.gestion-bottom-bar p {
+  margin: 0;
+  color: rgba(246, 247, 249, 0.5);
+  font-size: 10px;
+  letter-spacing: 0.5px;
+  text-align: right;
+}
+
+@media (max-width: 900px) {
+  .gestion-landing {
+    min-height: 100dvh;
+    height: auto;
+    padding: 74px 18px 180px;
+    overflow-y: auto;
+  }
+
+  .gestion-hero,
+  .gestion-feature-grid {
+    position: relative;
+    left: auto;
+    right: auto;
+    top: auto;
+    bottom: auto;
+    width: 100%;
+    margin: 0;
+  }
+
+  .gestion-brand {
+    width: min(280px, 70vw);
+    min-height: 118px;
+  }
+
+  .gestion-brand img {
+    max-height: 64px;
+  }
+
+  .gestion-copy h1 {
+    font-size: clamp(34px, 10vw, 56px);
+  }
+
+  .gestion-feature-grid {
+    grid-template-columns: 1fr;
+    margin-top: 26px;
+  }
+
+  .gestion-bottom-bar {
+    min-height: 148px;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+  }
+
+  .gestion-bottom-bar p {
+    text-align: left;
+  }
+}
