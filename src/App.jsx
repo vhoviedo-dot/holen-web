@@ -235,6 +235,75 @@ function GestionLanding({ onBack }) {
     </main>
   );
 }
+
+const miningFeatures = [
+  {
+    title: "Operacion monitoreada",
+    text: "Variables criticas, estados de equipos y procesos visibles para mejorar control operativo en campo y planta.",
+    icon: Gauge,
+  },
+  {
+    title: "Seguridad y alertas",
+    text: "Seguimiento de condiciones, eventos y alarmas para anticipar riesgos y responder con informacion clara.",
+    icon: ShieldCheck,
+  },
+  {
+    title: "Datos productivos",
+    text: "Tableros para produccion, mantenimiento, rendimiento, disponibilidad y trazabilidad minera.",
+    icon: BarChart3,
+  },
+  {
+    title: "Integracion minera",
+    text: "Conectamos sensores, equipos, sistemas y reportes para que la operacion trabaje como una sola plataforma.",
+    icon: Cpu,
+  },
+];
+
+function MiningLanding({ onBack }) {
+  return (
+    <main className="division-page page-mining mining-landing">
+      <video className="mining-bg-video" autoPlay muted loop playsInline webkit-playsinline="true" preload="auto" disablePictureInPicture>
+        <source src="/videos/holen-mining-bg.mp4" type="video/mp4" />
+      </video>
+      <button className="back-button" onClick={onBack}>
+        <ArrowLeft size={18} />
+        Volver
+      </button>
+
+      <section className="mining-hero">
+        <div className="mining-brand">
+          <img src="/images/holen-mining.png" alt="HOLEN MINING" />
+        </div>
+
+        <div className="mining-copy">
+          <span>HOLEN MINING</span>
+          <h1>Tecnologia para operaciones mineras</h1>
+          <p>
+            Desarrollamos soluciones digitales para monitorear procesos, integrar equipos, visualizar datos criticos y mejorar la toma de decisiones en entornos mineros.
+          </p>
+        </div>
+      </section>
+
+      <section className="mining-feature-grid" aria-label="Soluciones de Holen Mining">
+        {miningFeatures.map(({ title, text, icon: Icon }) => (
+          <article className="mining-feature" key={title}>
+            <Icon size={24} strokeWidth={1.8} />
+            <h2>{title}</h2>
+            <p>{text}</p>
+          </article>
+        ))}
+      </section>
+
+      <footer className="mining-bottom-bar">
+        <div>
+          <strong>Charlemos sobre tu proyecto</strong>
+          <span>Te podemos ayudar</span>
+        </div>
+        <p>Desarrollado por HOLEN GESTION - Todos los derechos reservados</p>
+      </footer>
+    </main>
+  );
+}
 const socialLinks = [
   {
     name: "Instagram",
@@ -333,6 +402,10 @@ function App() {
 
   if (active?.key === "gestion") {
     return <GestionLanding onBack={() => setActiveDivision(null)} />;
+  }
+
+  if (active?.key === "mining") {
+    return <MiningLanding onBack={() => setActiveDivision(null)} />;
   }
 
   if (active) {
@@ -442,6 +515,7 @@ function App() {
 }
 
 export default App;
+
 
 
 
