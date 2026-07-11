@@ -52,7 +52,7 @@ const agroFeatures = [
   },
 ];
 
-function AgroLanding({ onBack }) {
+function AgroLanding({ onBack, onContact }) {
   return (
     <main className="division-page page-agro agro-landing">
       <video className="agro-bg-video" autoPlay muted loop playsInline webkit-playsinline="true" preload="auto" disablePictureInPicture>
@@ -88,10 +88,14 @@ function AgroLanding({ onBack }) {
       </section>
 
       <footer className="agro-bottom-bar">
-        <div>
+        <div className="bottom-contact-copy">
           <strong>Charlemos sobre tu proyecto</strong>
           <span>Te podemos ayudar</span>
         </div>
+        <button className="bottom-contact-button" type="button" onClick={onContact} aria-label="Abrir contacto">
+          <MessageCircle size={20} strokeWidth={1.9} />
+          Contacto
+        </button>
         <p>Desarrollado por HOLEN GESTION - Todos los derechos reservados</p>
       </footer>
     </main>
@@ -100,28 +104,28 @@ function AgroLanding({ onBack }) {
 
 const industrialFeatures = [
   {
-    title: "Automatizacion industrial",
-    text: "Integracion de sensores, tableros, PLC y equipos para procesos mas estables y controlados.",
+    title: "PLC, SCADA y control",
+    text: "Programacion industrial, automatizacion, soporte tecnico y supervision para planta y maquinas.",
     icon: Factory,
   },
   {
-    title: "Control en tiempo real",
-    text: "Visualizacion de variables criticas, estados de maquina, alarmas y eventos operativos.",
+    title: "Mantenimiento integral",
+    text: "Servicio electrico, neumatico, mecanico, mediciones y diagnostico de equipos.",
     icon: Activity,
   },
   {
-    title: "Datos para decidir",
-    text: "Indicadores productivos y tableros para mantenimiento, calidad, eficiencia y gestion.",
+    title: "Proyectos e integraciones",
+    text: "Planimetrias, ingenieria, integracion de sistemas, puesta en marcha y documentacion.",
     icon: BarChart3,
   },
   {
-    title: "Sistemas confiables",
-    text: "Arquitecturas robustas para monitoreo, trazabilidad, seguridad operativa y continuidad.",
+    title: "Modernizacion de maquinas",
+    text: "Retrofitting, actualizaciones, mejoras de control y renovacion de equipos existentes.",
     icon: ShieldCheck,
   },
 ];
 
-function IndustrialLanding({ onBack }) {
+function IndustrialLanding({ onBack, onContact }) {
   return (
     <main className="division-page page-industrial industrial-landing">
       <video className="industrial-bg-video" autoPlay muted loop playsInline webkit-playsinline="true" preload="auto" disablePictureInPicture>
@@ -139,9 +143,9 @@ function IndustrialLanding({ onBack }) {
 
         <div className="industrial-copy">
           <span>HOLEN INDUSTRIAL</span>
-          <h1>Automatizacion, control y datos</h1>
+          <h1>Soluciones industriales completas</h1>
           <p>
-            Desarrollamos soluciones industriales para conectar procesos, visualizar informacion critica y mejorar la toma de decisiones en planta.
+            Automatizacion, programacion PLC/SCADA, mantenimiento tecnico, proyectos, integraciones, puesta en marcha y modernizacion de maquinas.
           </p>
         </div>
       </section>
@@ -157,10 +161,14 @@ function IndustrialLanding({ onBack }) {
       </section>
 
       <footer className="industrial-bottom-bar">
-        <div>
+        <div className="bottom-contact-copy">
           <strong>Charlemos sobre tu proyecto</strong>
           <span>Te podemos ayudar</span>
         </div>
+        <button className="bottom-contact-button" type="button" onClick={onContact} aria-label="Abrir contacto">
+          <MessageCircle size={20} strokeWidth={1.9} />
+          Contacto
+        </button>
         <p>Desarrollado por HOLEN GESTION - Todos los derechos reservados</p>
       </footer>
     </main>
@@ -190,7 +198,7 @@ const gestionFeatures = [
   },
 ];
 
-function GestionLanding({ onBack }) {
+function GestionLanding({ onBack, onContact }) {
   return (
     <main className="division-page page-gestion gestion-landing">
       <video className="gestion-bg-video" autoPlay muted loop playsInline webkit-playsinline="true" preload="auto" disablePictureInPicture>
@@ -226,10 +234,14 @@ function GestionLanding({ onBack }) {
       </section>
 
       <footer className="gestion-bottom-bar">
-        <div>
+        <div className="bottom-contact-copy">
           <strong>Charlemos sobre tu proyecto</strong>
           <span>Te podemos ayudar</span>
         </div>
+        <button className="bottom-contact-button" type="button" onClick={onContact} aria-label="Abrir contacto">
+          <MessageCircle size={20} strokeWidth={1.9} />
+          Contacto
+        </button>
         <p>Desarrollado por HOLEN GESTION - Todos los derechos reservados</p>
       </footer>
     </main>
@@ -259,7 +271,7 @@ const miningFeatures = [
   },
 ];
 
-function MiningLanding({ onBack }) {
+function MiningLanding({ onBack, onContact }) {
   return (
     <main className="division-page page-mining mining-landing">
       <video className="mining-bg-video" autoPlay muted loop playsInline webkit-playsinline="true" preload="auto" disablePictureInPicture>
@@ -295,10 +307,14 @@ function MiningLanding({ onBack }) {
       </section>
 
       <footer className="mining-bottom-bar">
-        <div>
+        <div className="bottom-contact-copy">
           <strong>Charlemos sobre tu proyecto</strong>
           <span>Te podemos ayudar</span>
         </div>
+        <button className="bottom-contact-button" type="button" onClick={onContact} aria-label="Abrir contacto">
+          <MessageCircle size={20} strokeWidth={1.9} />
+          Contacto
+        </button>
         <p>Desarrollado por HOLEN GESTION - Todos los derechos reservados</p>
       </footer>
     </main>
@@ -370,6 +386,10 @@ function App() {
     setContactForm((current) => ({ ...current, [field]: value }));
   };
 
+  const openContactModal = () => {
+    setContactStatus("idle");
+    setContactOpen(true);
+  };
   const sendContactMessage = async (event) => {
     event.preventDefault();
     setContactStatus("sending");
@@ -392,20 +412,53 @@ function App() {
     }
   };
 
+  const contactModal = contactOpen && (
+    <div className="contact-modal-backdrop" role="presentation" onClick={() => setContactOpen(false)}>
+      <form className="contact-modal" onSubmit={sendContactMessage} onClick={(event) => event.stopPropagation()}>
+        <div className="contact-modal-head">
+          <span>Contacto directo</span>
+          <button type="button" onClick={() => setContactOpen(false)} aria-label="Cerrar formulario">Cerrar</button>
+        </div>
+        <h2>Enviar mensaje a Holen</h2>
+        <input
+          type="text"
+          placeholder="Nombre"
+          value={contactForm.name}
+          onChange={(event) => updateContactField("name", event.target.value)}
+        />
+        <input
+          type="email"
+          placeholder="Email"
+          value={contactForm.email}
+          onChange={(event) => updateContactField("email", event.target.value)}
+        />
+        <textarea
+          placeholder="Escribi tu mensaje"
+          value={contactForm.message}
+          onChange={(event) => updateContactField("message", event.target.value)}
+          required
+        />
+        <button className="contact-submit" type="submit" disabled={contactStatus === "sending"}>{contactStatus === "sending" ? "Enviando..." : "Enviar mensaje"}</button>
+        {contactStatus === "sent" && <p className="contact-status">Mensaje enviado correctamente.</p>}
+        {contactStatus === "error" && <p className="contact-status contact-error">No se pudo enviar. Intentalo nuevamente.</p>}
+        <p>Tu consulta se enviara al equipo de Holen.</p>
+      </form>
+    </div>
+  );
   if (active?.key === "agro") {
-    return <AgroLanding onBack={() => setActiveDivision(null)} />;
+    return <><AgroLanding onBack={() => setActiveDivision(null)} onContact={openContactModal} />{contactModal}</>;
   }
 
   if (active?.key === "industrial") {
-    return <IndustrialLanding onBack={() => setActiveDivision(null)} />;
+    return <><IndustrialLanding onBack={() => setActiveDivision(null)} onContact={openContactModal} />{contactModal}</>;
   }
 
   if (active?.key === "gestion") {
-    return <GestionLanding onBack={() => setActiveDivision(null)} />;
+    return <><GestionLanding onBack={() => setActiveDivision(null)} onContact={openContactModal} />{contactModal}</>;
   }
 
   if (active?.key === "mining") {
-    return <MiningLanding onBack={() => setActiveDivision(null)} />;
+    return <><MiningLanding onBack={() => setActiveDivision(null)} onContact={openContactModal} />{contactModal}</>;
   }
 
   if (active) {
@@ -448,7 +501,7 @@ function App() {
         <nav className="social-links" aria-label="Redes y contacto de Holen">
           {socialLinks.map(({ name, href, action, icon: Icon }) => (
             action === "contact" ? (
-              <button key={name} type="button" onClick={() => { setContactStatus("idle"); setContactOpen(true); }} aria-label={name} title={name}>
+              <button key={name} type="button" onClick={openContactModal} aria-label={name} title={name}>
                 <Icon size={22} strokeWidth={1.8} />
               </button>
             ) : (
@@ -473,39 +526,7 @@ function App() {
         ))}
       </div>
 
-      {contactOpen && (
-        <div className="contact-modal-backdrop" role="presentation" onClick={() => setContactOpen(false)}>
-          <form className="contact-modal" onSubmit={sendContactMessage} onClick={(event) => event.stopPropagation()}>
-            <div className="contact-modal-head">
-              <span>Contacto directo</span>
-              <button type="button" onClick={() => setContactOpen(false)} aria-label="Cerrar formulario">Cerrar</button>
-            </div>
-            <h2>Enviar mensaje a Holen</h2>
-            <input
-              type="text"
-              placeholder="Nombre"
-              value={contactForm.name}
-              onChange={(event) => updateContactField("name", event.target.value)}
-            />
-            <input
-              type="email"
-              placeholder="Email"
-              value={contactForm.email}
-              onChange={(event) => updateContactField("email", event.target.value)}
-            />
-            <textarea
-              placeholder="Escribi tu mensaje"
-              value={contactForm.message}
-              onChange={(event) => updateContactField("message", event.target.value)}
-              required
-            />
-            <button className="contact-submit" type="submit" disabled={contactStatus === "sending"}>{contactStatus === "sending" ? "Enviando..." : "Enviar mensaje"}</button>
-            {contactStatus === "sent" && <p className="contact-status">Mensaje enviado correctamente.</p>}
-            {contactStatus === "error" && <p className="contact-status contact-error">No se pudo enviar. Intentalo nuevamente.</p>}
-            <p>Tu consulta se enviara al equipo de Holen.</p>
-          </form>
-        </div>
-      )}
+      {contactModal}
 
       <footer className="portal-footer">
         Desarrollado por HOLEN GESTION - Todos los derechos reservados
@@ -515,6 +536,8 @@ function App() {
 }
 
 export default App;
+
+
 
 
 
