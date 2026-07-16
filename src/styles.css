@@ -357,18 +357,22 @@ button {
 
 .back-button {
   position: fixed;
-  left: 24px;
-  top: 24px;
+  z-index: 1000;
+  left: 22px;
+  top: 22px;
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  min-height: 42px;
-  padding: 0 14px;
-  border: 1px solid var(--line);
-  border-radius: 6px;
-  background: rgba(255, 255, 255, 0.08);
-  color: var(--text);
+  min-height: 44px;
+  padding: 0 16px;
+  border: 1px solid rgba(255, 255, 255, 0.95);
+  border-radius: 8px;
+  background: rgba(246, 247, 249, 0.94);
+  color: #05070a;
+  font-weight: 850;
   cursor: pointer;
+  box-shadow: 0 18px 70px rgba(0, 0, 0, 0.48);
+  backdrop-filter: blur(10px);
 }
 
 .landing-stage {
@@ -767,7 +771,7 @@ button {
     display: grid;
     grid-template-columns: 1fr;
     gap: 12px;
-    margin: 24px auto 18px;
+    margin: 12px auto 18px;
     padding: 0;
     pointer-events: auto;
   }
@@ -946,7 +950,7 @@ button {
     position: absolute;
     z-index: 6;
     left: 50%;
-    top: 18%;
+    top: 35%;
     width: min(520px, calc(100vw - 48px));
     gap: 10px;
     animation: desktopStackEnter 560ms cubic-bezier(0.16, 1, 0.3, 1) both;
@@ -977,7 +981,7 @@ button {
     position: absolute;
     z-index: 6;
     left: 50%;
-    top: 52%;
+    top: 35%;
     width: min(720px, calc(100vw - 48px));
     display: flex;
     flex-wrap: nowrap;
@@ -1016,7 +1020,7 @@ button {
 @keyframes desktopDivisionEnter {
   from {
     opacity: 0;
-    transform: translateY(20px) scale(0.82);
+    transform: translateY(12px) scale(0.86);
   }
   to {
     opacity: 1;
@@ -2145,3 +2149,158 @@ button {
     min-height: 40px;
   }
 }
+
+.back-button:hover {
+  background: #ffffff;
+  color: #05070a;
+  border-color: #ffffff;
+}
+
+
+
+/* Ajuste final local: compacta la apertura del portal y fuerza visibilidad de Volver. */
+@media (min-width: 521px) {
+  .portal.is-open .core-stage {
+    top: 12% !important;
+  }
+
+  .portal.is-open .division-ring {
+    top: 36% !important;
+  }
+}
+
+.back-button {
+  z-index: 1000 !important;
+  background: #f6f7f9 !important;
+  color: #05070a !important;
+  border-color: #ffffff !important;
+  opacity: 1 !important;
+}
+
+/* Ajuste local de Volver y logos divisionales en mobile. */
+.back-button {
+  z-index: 1000 !important;
+  left: 18px !important;
+  top: 18px !important;
+  min-height: 36px !important;
+  padding: 0 12px !important;
+  gap: 7px !important;
+  border-radius: 7px !important;
+  border: 1px solid rgba(255, 255, 255, 0.42) !important;
+  background: rgba(4, 6, 8, 0.74) !important;
+  color: rgba(255, 255, 255, 0.94) !important;
+  font-size: 14px !important;
+  font-weight: 750 !important;
+  box-shadow: 0 12px 34px rgba(0, 0, 0, 0.38) !important;
+  backdrop-filter: blur(12px) !important;
+}
+
+.back-button svg {
+  width: 16px !important;
+  height: 16px !important;
+}
+
+.back-button:hover {
+  background: rgba(255, 255, 255, 0.14) !important;
+  color: #ffffff !important;
+  border-color: rgba(255, 255, 255, 0.68) !important;
+}
+
+@media (min-width: 901px) {
+  .agro-hero,
+  .industrial-hero,
+  .gestion-hero,
+  .mining-hero {
+    top: 70px !important;
+  }
+}
+
+@media (max-width: 900px) {
+  .agro-landing,
+  .industrial-landing,
+  .gestion-landing,
+  .mining-landing {
+    padding-top: 66px !important;
+  }
+
+  .agro-brand,
+  .industrial-brand,
+  .gestion-brand,
+  .mining-brand {
+    justify-self: center !important;
+    width: min(210px, 58vw) !important;
+    min-height: 82px !important;
+    padding: 8px 12px !important;
+  }
+
+  .agro-brand img,
+  .industrial-brand img,
+  .gestion-brand img,
+  .mining-brand img {
+    max-height: 48px !important;
+  }
+
+  .agro-copy,
+  .industrial-copy,
+  .gestion-copy,
+  .mining-copy {
+    width: 100% !important;
+  }
+}
+
+/* Ajuste local: reduce el espacio entre iconos sociales y divisiones en la home. */
+@media (min-width: 521px) {
+  .portal.is-open .division-ring {
+    top: 30% !important;
+  }
+}
+
+/* Ajuste local: centra el conjunto padre/iconos/hijos sin subir todo. */
+@media (min-width: 521px) {
+  .portal.is-open .core-stage {
+    top: 20% !important;
+  }
+
+  .portal.is-open .division-ring {
+    top: 46% !important;
+  }
+}
+
+/* Ajuste local: elimina el espacio vacío entre iconos sociales y divisiones. */
+@media (min-width: 521px) {
+  .portal.is-open .core-stage {
+    top: 20% !important;
+  }
+
+  .portal.is-open .division-ring {
+    top: 38% !important;
+  }
+}
+
+/* Ajuste local: divisiones casi pegadas a los iconos sociales. */
+@media (min-width: 521px) {
+  .portal.is-open .core-stage {
+    top: 20% !important;
+  }
+
+  .portal.is-open .division-ring {
+    top: 32% !important;
+  }
+}
+
+/* Correccion real: la fila ya no se centra dentro de una caja alta heredada. */
+@media (min-width: 521px) {
+  .portal.is-open .core-stage {
+    top: 20% !important;
+  }
+
+  .portal.is-open .division-ring {
+    top: 48% !important;
+    bottom: auto !important;
+    right: auto !important;
+    height: auto !important;
+    min-height: 0 !important;
+    align-items: flex-start !important;
+  }
+}
+
