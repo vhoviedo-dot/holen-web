@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="metal" x1="12" y1="8" x2="52" y2="56" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="0.38" stop-color="#c8cdd0"/>
+      <stop offset="0.72" stop-color="#f2f3f3"/>
+      <stop offset="1" stop-color="#8f979b"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="45%" r="65%">
+      <stop offset="0" stop-color="#263238"/>
+      <stop offset="1" stop-color="#020405"/>
+    </radialGradient>
+  </defs>
+  <rect width="64" height="64" rx="14" fill="url(#glow)"/>
+  <path d="M15 17h10v12h14V17h10v30H39V36H25v11H15V17Z" fill="url(#metal)"/>
+  <path d="M12 52h40" stroke="#9bb66d" stroke-width="3" stroke-linecap="round" opacity="0.9"/>
+</svg>
