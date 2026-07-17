@@ -1,4 +1,4 @@
-﻿import { Activity, ArrowLeft, BarChart3, Cpu, Droplets, Facebook, Factory, Gauge, Instagram, Linkedin, Mail, MessageCircle, Satellite, ShieldCheck } from "lucide-react";
+﻿import { Activity, ArrowLeft, BarChart3, Cpu, Droplets, Facebook, Factory, Gauge, Instagram, Linkedin, Mail, MessageCircle, Satellite, ShieldCheck, UsersRound } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
 const divisions = [
@@ -342,6 +342,11 @@ const socialLinks = [
     icon: MessageCircle,
   },
   {
+    name: "Quienes somos",
+    action: "about",
+    icon: UsersRound,
+  },
+  {
     name: "Correo",
     href: "mailto:contacto@holen.com.ar",
     icon: Mail,
@@ -352,6 +357,7 @@ function App() {
   const [opened, setOpened] = useState(false);
   const [activeDivision, setActiveDivision] = useState(null);
   const [contactOpen, setContactOpen] = useState(false);
+  const [aboutOpen, setAboutOpen] = useState(false);
   const [contactStatus, setContactStatus] = useState("idle");
   const [contactForm, setContactForm] = useState({ name: "", email: "", message: "" });
   const videoRef = useRef(null);
@@ -412,6 +418,21 @@ function App() {
     }
   };
 
+  const aboutModal = aboutOpen && (
+    <div className="contact-modal-backdrop" role="presentation" onClick={() => setAboutOpen(false)}>
+      <section className="contact-modal about-modal" onClick={(event) => event.stopPropagation()}>
+        <div className="contact-modal-head">
+          <span>Quienes somos</span>
+          <button type="button" onClick={() => setAboutOpen(false)} aria-label="Cerrar informacion">Cerrar</button>
+        </div>
+        <h2>Holen, tecnologia aplicada al trabajo real</h2>
+        <p>Somos una joven empresa sanjuanina formada por profesionales con mas de 15 anos de experiencia en industria, automatizacion, programacion y gestion operativa.</p>
+        <p>Unimos conocimiento de planta, criterio tecnico y desarrollo digital para crear soluciones claras, robustas y hechas a medida: desde PLC, SCADA, tableros y mantenimiento industrial, hasta sistemas web, monitoreo remoto e integraciones para que cada negocio trabaje mejor.</p>
+        <p>Nos mueve una idea simple: escuchar el problema, entender la operacion y construir herramientas que realmente sirvan.</p>
+      </section>
+    </div>
+  );
+
   const contactModal = contactOpen && (
     <div className="contact-modal-backdrop" role="presentation" onClick={() => setContactOpen(false)}>
       <form className="contact-modal" onSubmit={sendContactMessage} onClick={(event) => event.stopPropagation()}>
@@ -446,19 +467,19 @@ function App() {
     </div>
   );
   if (active?.key === "agro") {
-    return <><AgroLanding onBack={() => setActiveDivision(null)} onContact={openContactModal} />{contactModal}</>;
+    return <><AgroLanding onBack={() => setActiveDivision(null)} onContact={openContactModal} />{contactModal}{aboutModal}</>;
   }
 
   if (active?.key === "industrial") {
-    return <><IndustrialLanding onBack={() => setActiveDivision(null)} onContact={openContactModal} />{contactModal}</>;
+    return <><IndustrialLanding onBack={() => setActiveDivision(null)} onContact={openContactModal} />{contactModal}{aboutModal}</>;
   }
 
   if (active?.key === "gestion") {
-    return <><GestionLanding onBack={() => setActiveDivision(null)} onContact={openContactModal} />{contactModal}</>;
+    return <><GestionLanding onBack={() => setActiveDivision(null)} onContact={openContactModal} />{contactModal}{aboutModal}</>;
   }
 
   if (active?.key === "mining") {
-    return <><MiningLanding onBack={() => setActiveDivision(null)} onContact={openContactModal} />{contactModal}</>;
+    return <><MiningLanding onBack={() => setActiveDivision(null)} onContact={openContactModal} />{contactModal}{aboutModal}</>;
   }
 
   if (active) {
@@ -504,6 +525,10 @@ function App() {
               <button key={name} type="button" onClick={openContactModal} aria-label={name} title={name}>
                 <Icon size={22} strokeWidth={1.8} />
               </button>
+            ) : action === "about" ? (
+              <button key={name} type="button" onClick={() => setAboutOpen(true)} aria-label={name} title={name}>
+                <Icon size={22} strokeWidth={1.8} />
+              </button>
             ) : (
               <a key={name} href={href} target="_blank" rel="noreferrer" aria-label={name} title={name}>
                 <Icon size={22} strokeWidth={1.8} />
@@ -525,8 +550,8 @@ function App() {
           </button>
         ))}
       </div>
-
       {contactModal}
+      {aboutModal}
 
       <footer className="portal-footer">
         Desarrollado por HOLEN GESTION - Todos los derechos reservados

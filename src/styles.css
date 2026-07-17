@@ -2304,3 +2304,47 @@ button {
   }
 }
 
+
+/* Prueba local: iconos al pie sin cruzarse con el logo padre. */
+.portal.is-open .core-stage .social-links {
+  position: absolute !important;
+  left: 50% !important;
+  top: calc(80vh - 116px) !important;
+  bottom: auto !important;
+  z-index: 14 !important;
+  margin: 0 !important;
+  max-height: 64px !important;
+  opacity: 1 !important;
+  overflow: visible !important;
+  pointer-events: auto !important;
+  transform: translateX(-50%) !important;
+}
+
+@media (max-width: 520px) {
+  .portal.is-open .core-stage .social-links {
+    top: calc(80vh - 132px) !important;
+    gap: 9px !important;
+  }
+}
+
+/* Quienes somos: texto institucional dentro del modal oscuro. */
+.about-modal {
+  max-width: 620px !important;
+}
+
+.about-modal h2 {
+  max-width: 520px;
+  margin-bottom: 18px !important;
+}
+
+.about-modal p {
+  color: rgba(235, 240, 242, 0.78) !important;
+  font-size: 15px !important;
+  line-height: 1.7 !important;
+  margin: 0 0 14px !important;
+}
+
+.about-modal p:last-child {
+  margin-bottom: 0 !important;
+  color: rgba(255, 255, 255, 0.9) !important;
+}
