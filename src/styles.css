@@ -2348,3 +2348,92 @@ button {
   margin-bottom: 0 !important;
   color: rgba(255, 255, 255, 0.9) !important;
 }
+
+/* Ajuste visual: fondos divisionales mas vivos y menos apagados. */
+.agro-bg-video,
+.industrial-bg-video,
+.gestion-bg-video,
+.mining-bg-video {
+  opacity: 0.92 !important;
+  filter: saturate(1.12) contrast(1.04) brightness(1.02) !important;
+}
+
+.agro-landing::before {
+  background:
+    linear-gradient(90deg, rgba(3, 7, 5, 0.62) 0%, rgba(3, 7, 5, 0.42) 34%, rgba(3, 7, 5, 0.08) 58%, rgba(3, 7, 5, 0.18) 100%),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.22), rgba(0, 0, 0, 0.04) 48%, rgba(0, 0, 0, 0.42) 100%) !important;
+}
+
+.industrial-landing::before {
+  background:
+    linear-gradient(90deg, rgba(3, 7, 10, 0.64) 0%, rgba(3, 7, 10, 0.42) 34%, rgba(3, 7, 10, 0.08) 58%, rgba(3, 7, 10, 0.2) 100%),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.22), rgba(0, 0, 0, 0.04) 48%, rgba(0, 0, 0, 0.44) 100%) !important;
+}
+
+.gestion-landing::before {
+  background:
+    linear-gradient(90deg, rgba(8, 4, 5, 0.64) 0%, rgba(8, 4, 5, 0.42) 34%, rgba(8, 4, 5, 0.08) 58%, rgba(8, 4, 5, 0.2) 100%),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.04) 48%, rgba(0, 0, 0, 0.44) 100%) !important;
+}
+
+.mining-landing::before {
+  background:
+    linear-gradient(90deg, rgba(10, 7, 3, 0.64) 0%, rgba(10, 7, 3, 0.42) 34%, rgba(10, 7, 3, 0.08) 58%, rgba(10, 7, 3, 0.22) 100%),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.04) 48%, rgba(0, 0, 0, 0.46) 100%) !important;
+}
+
+/* Ajuste visual: hijos con mas presencia en escritorio. */
+@media (min-width: 721px) {
+  .portal.is-open .division-ring {
+    width: min(1120px, calc(100vw - 56px)) !important;
+    gap: clamp(18px, 2vw, 30px) !important;
+  }
+
+  .portal.is-open .division-node {
+    width: clamp(180px, 18vw, 260px) !important;
+    min-width: 180px !important;
+    height: clamp(76px, 7vw, 98px) !important;
+    padding: 12px 18px !important;
+    border-radius: 12px !important;
+  }
+
+  .portal.is-open .division-node img {
+    max-height: clamp(46px, 4.6vw, 66px) !important;
+  }
+}
+
+/* Invitacion inicial debajo del logo padre. */
+.portal-invite {
+  margin: 2px 0 0;
+  color: rgba(246, 247, 249, 0.72);
+  font-size: clamp(13px, 1.35vw, 17px);
+  font-weight: 650;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-shadow: 0 0 24px rgba(255, 255, 255, 0.16);
+  opacity: 0.92;
+  transition: opacity 240ms ease, transform 240ms ease, max-height 240ms ease, margin 240ms ease;
+}
+
+.portal.is-open .portal-invite {
+  max-height: 0;
+  margin: 0;
+  opacity: 0;
+  transform: translateY(-8px);
+  overflow: hidden;
+}
+
+/* Inicio limpio: el mensaje de bienvenida aparece recien al desplegar hijos. */
+.portal:not(.is-open) .portal-welcome {
+  max-height: 0 !important;
+  margin: 0 !important;
+  opacity: 0 !important;
+  transform: translateY(-6px) !important;
+  overflow: hidden !important;
+}
+
+.portal.is-open .portal-welcome {
+  max-height: 40px !important;
+  opacity: 1 !important;
+  transform: none !important;
+}

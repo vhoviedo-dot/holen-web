@@ -519,6 +519,7 @@ function App() {
           <img src="/images/holen-main-only.png" alt="HOLEN" />
         </button>
         <p className="portal-welcome">BIENVENIDO AL SITIO OFICIAL DE HOLEN</p>
+        <p className="portal-invite">Ingresa y descubri Holen</p>
         <nav className="social-links" aria-label="Redes y contacto de Holen">
           {socialLinks.map(({ name, href, action, icon: Icon }) => (
             action === "contact" ? (
